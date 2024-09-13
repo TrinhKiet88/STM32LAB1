@@ -91,10 +91,36 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int LED_Status = 0; int counter = 0;
   while (1)
   {
     /* USER CODE END WHILE */
 
+	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
+	    	  	  HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin);
+
+	    	  	  switch (LED_Status){
+	    	  	  	  case 0:
+	    	  	  		  HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin, RESET);
+	    	  	  		  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin, SET);
+	    	  	  		  counter++;
+	    	  	  		  if (counter >= 2) {
+	    	  	  			  LED_Status = 1;
+	    	  	  			  counter = 0;
+	    	  	  		  }
+	    	  	  		  break;
+
+	    	  	  	  case 1:
+	    	  	  		  HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin, SET);
+	    	  	  		  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin, RESET);
+	    	  	  		  counter++;
+	    	  	  		  if (counter >= 2){
+	    	  	  			  LED_Status = 0;
+	    	  	  			  counter = 0;
+	    	  	  		  }
+	    	  	  		  break;
+	    	  	  }
+	    	  	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
