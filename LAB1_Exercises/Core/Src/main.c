@@ -96,31 +96,45 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
-	    	  	  HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin);
+	  HAL_GPIO_TogglePin(LED_4_GPIO_Port,LED_4_Pin);
+	  HAL_GPIO_TogglePin(LED_5_GPIO_Port,LED_5_Pin);
+	  HAL_GPIO_TogglePin(LED_6_GPIO_Port,LED_6_Pin);
 
-	    	  	  switch (LED_Status){
-	    	  	  	  case 0:
-	    	  	  		  HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin, RESET);
-	    	  	  		  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin, SET);
-	    	  	  		  counter++;
-	    	  	  		  if (counter >= 2) {
-	    	  	  			  LED_Status = 1;
-	    	  	  			  counter = 0;
-	    	  	  		  }
-	    	  	  		  break;
+	    	  	switch (LED_Status){
+	    	  	  	  	  	  	  	  case 0:
+	    	  	  	  	  	  	  		  HAL_GPIO_WritePin(LED_4_GPIO_Port,LED_4_Pin, SET);
+	    	  	  	  	  	  	  		  HAL_GPIO_WritePin(LED_5_GPIO_Port,LED_5_Pin, RESET);
+	    	  	  	  	  	  	  		  HAL_GPIO_WritePin(LED_6_GPIO_Port,LED_6_Pin, RESET);
+	    	  	  	  	  	  	  		  counter++;
+	    	  	  	  	  	  	  		  if (counter >= 5) {
+	    	  	  	  	  	  	  			  LED_Status = 2;
+	    	  	  	  	  	  	  			  counter = 0;
+	    	  	  	  	  	  	  		  }
+	    	  	  	  	  	  	  		  break;
 
-	    	  	  	  case 1:
-	    	  	  		  HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin, SET);
-	    	  	  		  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin, RESET);
-	    	  	  		  counter++;
-	    	  	  		  if (counter >= 2){
-	    	  	  			  LED_Status = 0;
-	    	  	  			  counter = 0;
-	    	  	  		  }
-	    	  	  		  break;
-	    	  	  }
-	    	  	  HAL_Delay(1000);
+	    	  	  	  	  	  	  	  case 1:
+	    	  	  	  	  	  	  		  HAL_GPIO_WritePin(LED_4_GPIO_Port,LED_4_Pin, RESET);
+	    	  	  	  	  	  	  	  	  HAL_GPIO_WritePin(LED_5_GPIO_Port,LED_5_Pin, SET);
+	    	  	  	  	  	  	  	  	  HAL_GPIO_WritePin(LED_6_GPIO_Port,LED_6_Pin, RESET);
+	    	  	  	  	  	  	  		  counter++;
+	    	  	  	  	  	  	  		  if (counter >= 2){
+	    	  	  	  	  	  	  			  LED_Status = 0;
+	    	  	  	  	  	  	  			  counter = 0;
+	    	  	  	  	  	  	  		  }
+	    	  	  	  	  	  	  		  break;
+	    	  	  	  				  case 2:
+	    	  	  	  					  HAL_GPIO_WritePin(LED_4_GPIO_Port,LED_4_Pin, RESET);
+	    	  	  	  					  HAL_GPIO_WritePin(LED_5_GPIO_Port,LED_5_Pin, RESET);
+	    	  	  	  					  HAL_GPIO_WritePin(LED_6_GPIO_Port,LED_6_Pin, SET);
+	    	  	  	  	  	  	    	  counter++;
+	    	  	  	  	  	  	    	  if (counter >= 3){
+	    	  	  	  	  	  	    		  LED_Status = 1;
+	    	  	  	  	  	  	    		  counter = 0;
+	    	  	  	  	  	  	    	  }
+	    	  	  	  	  	  	    	  break;
+	    	  	  	  	  	  	  }
+
+	    	  	  	  	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
