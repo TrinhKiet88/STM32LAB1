@@ -203,8 +203,11 @@ int main(void)
 	 	  	  	  HAL_GPIO_TogglePin(LED_10_GPIO_Port,LED_10_Pin);
 	 	  	  	  HAL_GPIO_TogglePin(LED_11_GPIO_Port,LED_11_Pin);
 	 	  	  	  HAL_GPIO_TogglePin(LED_12_GPIO_Port,LED_12_Pin);
-
 	 	  	  	  clearAllClock();
+	 	  	  	  setNumberOnClock(10);
+	 	  	  	  setNumberOnClock(3);
+	 	  	  	  setNumberOnClock(8);
+	 	  	  	  clearNumberOnClock(8);
 	 	  	  	  HAL_Delay (1000);
   }
   /* USER CODE END 3 */
