@@ -183,8 +183,8 @@ int main(void)
   	  			  		  	  		break;
   	  			  	  }
   	  	  }
+  	  	  int hour=0; int min=0; int sec=0;
   /* USER CODE END 2 */
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -204,10 +204,24 @@ int main(void)
 	 	  	  	  HAL_GPIO_TogglePin(LED_11_GPIO_Port,LED_11_Pin);
 	 	  	  	  HAL_GPIO_TogglePin(LED_12_GPIO_Port,LED_12_Pin);
 	 	  	  	  clearAllClock();
-	 	  	  	  setNumberOnClock(10);
-	 	  	  	  setNumberOnClock(3);
-	 	  	  	  setNumberOnClock(8);
-	 	  	  	  clearNumberOnClock(8);
+	 	  	  	  clearNumberOnClock(hour - 1);
+				  clearNumberOnClock(min - 1);
+				  clearNumberOnClock(sec - 1);
+	 	  	  	  setNumberOnClock(hour);
+	 	  	  	  setNumberOnClock(min);
+	 	  	  	  setNumberOnClock(sec);
+	 	  	  	  sec= sec+1;
+	 	  	  	  if (sec > 11) {
+	 	  	  		  sec=0;
+	 	  	  		  min++;
+	 	  	  	  }
+	 	  	  	  if (min > 11) {
+	 	  	  		  min=0;
+	 	  	  		  hour++;
+	 	  	  	  }
+	 	  	  	  if (hour > 11) {
+	 	  	  		  hour = 0;
+	 	  	  	  }
 	 	  	  	  HAL_Delay (1000);
   }
   /* USER CODE END 3 */
