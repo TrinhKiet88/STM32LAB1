@@ -175,10 +175,10 @@ int main(void)
   	  			  		  	  		break;
   	  			  	  }
   	  	  }
-  	  	  int hour=3; int min=10; int sec=0;
- 8000204:	2303      	movs	r3, #3
+  	  	  int hour=0; int min=0; int sec=0;
+ 8000204:	2300      	movs	r3, #0
  8000206:	60fb      	str	r3, [r7, #12]
- 8000208:	230a      	movs	r3, #10
+ 8000208:	2300      	movs	r3, #0
  800020a:	60bb      	str	r3, [r7, #8]
  800020c:	2300      	movs	r3, #0
  800020e:	607b      	str	r3, [r7, #4]
